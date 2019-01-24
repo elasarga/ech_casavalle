@@ -9,20 +9,20 @@
 
 ** Empezamos por la ECH 2016
 
-use "C:\Users\daniel.rodriguez\Documents\Casavalle\ECH Stata\ech 2016.dta", clear
+use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2016.dta", clear
       // Por mayor comodidad transferí los datos a Stata; para no confundir los tantos
-	  // guardé las bases .dta en mi propia carpeta
+      // guardé las bases .dta en mi propia carpeta
 
 ** Variables que cambian de categoría	  
 rename e202_7 e202_7_16	  
-	  // Cambia la variable "Razones para no haber terminado educación media" (e202_7): 
-	  // la opción única "No tenía interés / Le interesaba aprender otras cosas" (valor 2
-	  // en la ECH 2016) se divide en la ECH 2017 en dos opciones, "No tenía interés" y
+      // Cambia la variable "Razones para no haber terminado educación media" (e202_7): 
+      // la opción única "No tenía interés / Le interesaba aprender otras cosas" (valor 2
+      // en la ECH 2016) se divide en la ECH 2017 en dos opciones, "No tenía interés" y
       // "Le interesaba aprender otras cosas" (valores 9 y 10 respectivamente)
 rename f266 f266_16
 rename f268 f268_16	  
-	  // En la ECH 2017 se agrega en las variables "Reconocimiento de horas extra..." (f266) 
-	  // y "Licencia por enfermedad o lesión paga" (f268) la opción "No sabe" (valores 5 y 3 
+      // En la ECH 2017 se agrega en las variables "Reconocimiento de horas extra..." (f266) 
+      // y "Licencia por enfermedad o lesión paga" (f268) la opción "No sabe" (valores 5 y 3 
       // respectivamente)	  
 	  
 /* Variables nuevas y/o que cambian nombre y categoría
@@ -34,37 +34,37 @@ rename f268 f268_16
 - Se agrega en las variables "Forma en que percibió los ingresos" (g250 y g251) la 
   opción "Tarjeta prepaga" (g250_5 y g251_5) */
    
-save "C:\Users\daniel.rodriguez\Documents\Casavalle\ECH Stata\ech 2016.dta", replace
+save "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2016.dta", replace
    
  
 
 ** Vamos ahora con la 2015.
  
-use "C:\Users\daniel.rodriguez\Documents\Casavalle\ECH Stata\ech 2015.dta", clear 
+use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2015.dta", clear 
 
 ** Variables que cambian de categoría
 rename e202_7 e202_7_16	
 rename f266 f266_16
 rename f268 f268_16	
        // La ECH 2015 tiene el mismo formato que la ECH 2016 para las variables e202_7, f266
-	   // y f268. Ver líneas 17 y ss.
+       // y f268. Ver líneas 17 y ss.
 rename e35 e35_15
        // La variable "Tipo de unión" (e35) a partir de la ECH 2016 se complejiza: se 
-	   // distingue entre casamiento civil entre personas de distinto y del mismo sexo 
-	   // (valores 4 y 5 respectivamente; originalmente valor 1), y también entre unión 
-	   // concubinaria y unión de hecho. Las uniones concubinarias mantienen su valor, y las 
-	   // de hecho toman valor 6 o 7 según se conformen con personas de distinto o del mismo 
-	   // sexo.
+       // distingue entre casamiento civil entre personas de distinto y del mismo sexo 
+       // (valores 4 y 5 respectivamente; originalmente valor 1), y también entre unión 
+       // concubinaria y unión de hecho. Las uniones concubinarias mantienen su valor, y las 
+       // de hecho toman valor 6 o 7 según se conformen con personas de distinto o del mismo 
+       // sexo.
 rename e246 e246_15
        // A partir de la ECH 2016, en la variable "Tipo de canasta alimentaria recibida" 
-	   // (e246) se agrega la opción Uruguay Crece Contigo (valor 12) 
+       // (e246) se agrega la opción Uruguay Crece Contigo (valor 12) 
 rename f125 f125_15	  
        // La variable "tipo de pensión" (f125) incorpora, a partir de la ECH 2016, las 
-	   // pensiones a víctimas de delitos violentos, hijos de fallecidos por violencia 
-	   // doméstica y la Pensión Ley 18596 (valores 5, 6 y 7 respectivamente) 
+       // pensiones a víctimas de delitos violentos, hijos de fallecidos por violencia 
+       // doméstica y la Pensión Ley 18596 (valores 5, 6 y 7 respectivamente) 
 rename d8_1 d8_1_15	   
        // Desde la ECH 2016 se agrega en la variable "Tenencia de la vivienda" (d8_1) la 
-	   // categoría "Miembro de cooperativa de vivienda", que toma valor 10
+       // categoría "Miembro de cooperativa de vivienda", que toma valor 10
    
 /* Variables nuevas y/o que cambian nombre y categoría
 - Cambia la variable "Elementos de confort". Se simplifican los rubros relacionados a
@@ -80,12 +80,12 @@ rename d8_1 d8_1_15
   anteriormente sólo se preguntaba sobre el uso el último mes)
 - Se incorpora consulta sobre el uso de internet en la tablet del Plan Ibirapitá (e250) */
 
-save "C:\Users\daniel.rodriguez\Documents\Casavalle\ECH Stata\ech 2015.dta", replace
+save "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2015.dta", replace
 
 
 ** Turno de la 2014
 
-use "C:\Users\daniel.rodriguez\Documents\Casavalle\ECH Stata\ech 2014.dta", clear 
+use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2014.dta", clear 
 
 ** Variables que cambian de nombre
 rename loc_agr_13 locagr
@@ -102,18 +102,25 @@ rename e202_7 e202_7_16 // ver línea 17
 rename e246 e246_15 // ver línea 48
 rename f266 f266_16
 rename f268 f268_16 // ver línea 47 y ss.
+rename f125 f125_15 // ver línea 61
 
 rename h167_1 h167_1_14
        // Con anterioridad a 2015, la variable "Ingresos por depósitos bancarios" sólo 
-	   // tomaba dos valores (1: sí, 2: no). En adelante, se hace más específica (1: sí y
-	   // genera intereses, 2: no, 3: sí y no genera intereses).
+       // tomaba dos valores (1: sí, 2: no). En adelante, se hace más específica (1: sí y
+       // genera intereses, 2: no, 3: sí y no genera intereses).
 rename e191 e191_14
        // En la ECH 2014, como en la 2017, se incluye el bloque de preguntas sobre consumo
-	   // de tabaco. En 2014, la dummy sobre dejar de fumar (e191) es distinta a 2017: 
-	   // en vez de "En los últimos 12 meses le aconsejaron dejar de fumar" es "El médico le
-	   // aconsejó dejar de fumar".
+       // de tabaco. En 2014, la dummy sobre dejar de fumar (e191) es distinta a 2017: 
+       // en vez de "En los últimos 12 meses le aconsejaron dejar de fumar" es "El médico le
+       // aconsejó dejar de fumar".
 rename f92 f92_14 
-       // A partir de la ECH  	   
+       // A partir de la ECH 2015 se incorpora la opción "Trabajador de un programa social de 
+       // empleo" (valor 8) a la variable "Categoría de la ocupación" en el caso de trabajo
+       // secundario
+rename g132 g132_14
+rename g140 g140_14
+       // La ECH 2015 agrega la categoría "No corresponde" (valor 3) a la variable "Derecho a
+       // pastoreo" (g132 y g140)
 
 /* Variables nuevas y/o que cambian nombre y categoría 
 - A partir de 2015 se eliminan las variables relativas a percepción de ingresos por tarjeta
@@ -133,6 +140,12 @@ rename f92 f92_14
   pública (e562)  
 - A partir de la ECH 2015 cambian las variables del bloque de políticas sociales. Se
   eliminan las variables referidas a los tiques de INDA (e253-4) y se sustituyen por otras
-  que refieren a tarjetas de beneficios (TUS Mides y TUS INDA, e560 y ss.). También se 
+  que refieren a tarjetas de beneficios (TUS Mides y TUS INDA, e560 y ss). También se 
   incorpora una variable que indaga sobre la ayuda en especiee de leche en polvo (e561).
+- Previo a la ECH 2015 no se pregunta explícitamente si se recibió ingresos por pensiones
+  antes de preguntar el monto recibido por dicho concepto (hasta 2014 la dummy g_it_2 no existe)
+- Tras la ECH 2014 desaparecen las siguientes variables relativas al ingreso personal: "Ingreso
+  del trabajador dependiente por ocupación principal" (ytdop), "Ingreso del trabajador
+  dependiente por otras ocupaciones" (ytdos), "Ingreso del trabajador independiente" (ytinde), e
+  "Ingreso por transferencias" (ytransf).
 
