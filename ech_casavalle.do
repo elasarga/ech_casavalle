@@ -7,7 +7,7 @@
 ** base tal como está presentada para la ECH 2017.
 
 
-** Empezamos por la ECH 2016
+// Empezamos por la ECH 2016 //
 
 use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2016.dta", clear
       // Por mayor comodidad transferí los datos a Stata; para no confundir los tantos
@@ -37,8 +37,7 @@ rename f268 f268_16
 save "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2016.dta", replace
    
  
-
-** Vamos ahora con la 2015.
+// Vamos ahora con la 2015 //
  
 use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2015.dta", clear 
 
@@ -83,17 +82,19 @@ rename d8_1 d8_1_15
 save "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2015.dta", replace
 
 
-** Turno de la 2014
+// Turno de la 2014 //
 
 use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2014.dta", clear 
 
 ** Variables que cambian de nombre
 rename loc_agr_13 locagr
 rename nom_loc_agr_13 nom_locagr
-	   // Cambia el nombre de las variables de localidad agregada
+       // Cambia el nombre de las variables de localidad agregada
 rename e57_1 e559
 rename e57_4_1 e559_1
 rename e57_4_2 e559_2	   
+       // Cambia el nombre de las variables "Concurrencia a comedor" y "Cantidad de
+       // comidas recibidas en comedor"
 
 ** Variables que cambian de categoría
 rename d8_1 d8_1_15 // ver línea 65	
@@ -105,7 +106,7 @@ rename f268 f268_16 // ver línea 47 y ss.
 rename f125 f125_15 // ver línea 61
 
 rename h167_1 h167_1_14
-       // Con anterioridad a 2015, la variable "Ingresos por depósitos bancarios" sólo 
+       // En la ECH 2014, la variable "Ingresos por depósitos bancarios" sólo 
        // tomaba dos valores (1: sí, 2: no). En adelante, se hace más específica (1: sí y
        // genera intereses, 2: no, 3: sí y no genera intereses).
 rename e191 e191_14
@@ -148,4 +149,29 @@ rename g140 g140_14
   del trabajador dependiente por ocupación principal" (ytdop), "Ingreso del trabajador
   dependiente por otras ocupaciones" (ytdos), "Ingreso del trabajador independiente" (ytinde), e
   "Ingreso por transferencias" (ytransf).
+
+
+// Sigue la 2013 //
+
+use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2013.dta", clear 
+
+** Variables que cambian de nombre
+rename loc_agr_13 locagr
+rename nom_loc_agr_13 nom_locagr // ver línea 90 y ss.
+
+** Variables que cambian de categoría
+rename d8_1 d8_1_15 // ver línea 65
+
+/* Variables nuevas y/o que cambian nombre y categoría 
+- A partir de 2014 se incorpora la variable "Fuente de energía para calefaccionar" (d260)
+- En la sección "Elementos de confort", se agregan desde 2014 variables para especificar el 
+  número de equipos de AC, autos y ciclomotores (d14_1, d18_1 y d19_1, respectivamente)
+- Desde 2014 aparece una variable que recoge los ingresos percibidos por alquiler de maquinaria
+  y vehículos (h269 y h269_1) y marcas y patentes (h271 y h271_1)
+- Con anterioridad a 2014, los ingresos por intereses (de cualquier tipo) se concentraban en las
+  variables "Recibió intereses" (h167) y "Ingreso por intereses" (h168_1 y h168_2). En adelante
+  ocurre lo descrito en líneas 168 y ss. NOTA: no es necesario cambiar el nombre de estas
+  variables en el presente caso porque los nombre h167, h168_1 y h168_2 no se utilizan en
+  ninguna variable de ECHs posteriores.
+  
 
