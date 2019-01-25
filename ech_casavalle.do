@@ -126,8 +126,7 @@ rename g140 g140_14
 /* Variables nuevas y/o que cambian nombre y categoría 
 - A partir de 2015 se eliminan las variables relativas a percepción de ingresos por tarjeta
   alimentaria INDA/Mides (h157 y h157_1)  
-- De 2014 (inclusive) para atrás no se incluye la variable e558 (número de persona) en la
-  sección "Identificación del informante"
+- No se incluye la variable e558 (número de persona) en la sección "Identificación del informante"
 - A partir de 2015 se incorpora un espacio de descripción de la ascendencia de la persona si
   ésta no coincide con ninguna opción establecida (e29_5_1)  
 - Lo mismo ocurre para la pregunta "¿Se atiende regularmente en este servicio de salud?"
@@ -174,4 +173,95 @@ rename d8_1 d8_1_15 // ver línea 65
   variables en el presente caso porque los nombre h167, h168_1 y h168_2 no se utilizan en
   ninguna variable de ECHs posteriores.
   
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ *ECH 2011
+
+use "C:\Users\evelin.lasarga\Documents\Casavalle\ECH Stata\ech 2011.dta", clear
+
+*variables que cambian de nombre
+rename estratogeo09 estred13
+
+*variables que cambian de categoria
+*/nom_locagr no tiene Capilla del Sauce y tiene tacuarembo (sin tilde) además de tacuarembó
+replace nom_locagr="tacuarembó" if nom_locagr=="tacuarembo"
+
+*/segm varía algunas categorías
+rename segm segm_11
+
+*variables que cambian nombre y categoría
+
+*variables que están solo en 2011
+trimestre
+
+*variables que están solo en 2017
+
+*ECH 2010
+
+use "C:\Users\evelin.lasarga\Documents\Casavalle\ECH Stata\ech 2010.dta", clear
+
+*variables que cambian de nombre
+rename estratogeo09 estred13
+
+
+*variables que cambian de categoria
+
+
+*/nom_locagr no tiene Capilla del Sauce y tiene tacuarembo (sin tilde) además de tacuarembó
+replace nom_locagr="tacuarembó" if nom_locagr=="tacuarembo"
+
+*/segm varía algunas categorías
+rename segm segm_10
+
+*variables que cambian nombre y categoría
+
+
+*variables que están solo en 2010
+trimestre
+
+*variables que están solo en 2017
+
+*ECH 2009
+
+use "C:\Users\evelin.lasarga\Documents\Casavalle\ECH Stata\ech 2009.dta", clear
+
+*variables que cambian de nombre
+
+
+
+*variables que cambian de categoria
+rename secc secc_09
+*/categorías solo para Montevideo
+
+rename locagr locagr_09
+*/menos categorías que en 2017
+
+rename nom_locagr nom_locagr_09
+*/menos categorías que en 2017
+
+*/segm varía algunas categorías
+rename segm segm_09
+
+*/barrio varía algunas categorías
+rename barrio barrio_09
+
+*/nombarrio varía algunas categorías
+rename nombarrio nombarrio_09
+
+
+*variables que cambian nombre y categoría
+rename estrato estred13_09
+
+
+*variables que están solo en 2009
+trimestre
+
+*variables que están solo en 2017
 
