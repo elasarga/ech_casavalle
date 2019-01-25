@@ -243,3 +243,407 @@ rename c4 c4_12
   otros hogares (i259). Anteriormente sólo se preguntaba de forma directa por qué monto se habían
   hecho tales contribuciones.
  
+//*ECH 2011//
+
+use "C:\Users\evelin.lasarga\Documents\Casavalle\ECH Stata\ech 2011.dta", clear
+
+*variables que cambian de nombre
+rename estratogeo09 estred13
+
+*variables que cambian de categoria
+*/nom_locagr no tiene Capilla del Sauce y tiene tacuarembo (sin tilde) además de tacuarembó
+replace nom_locagr="tacuarembó" if nom_locagr=="tacuarembo"
+
+*/segm varía algunas categorías
+rename segm segm_11
+
+*variables que cambian nombre y categoría
+
+*variables que están solo en 2011
+trimestre
+
+*variables que están solo en 2017
+
+//*ECH 2010//
+
+use "C:\Users\evelin.lasarga\Documents\Casavalle\ECH Stata\ech 2010.dta", clear
+
+*variables que cambian de nombre
+rename estratogeo09 estred13
+
+
+
+*variables que cambian de categoria
+
+
+*/nom_locagr no tiene Capilla del Sauce y tiene tacuarembo (sin tilde) además de tacuarembó
+replace nom_locagr="tacuarembó" if nom_locagr=="tacuarembo"
+
+*/segm varía algunas categorías
+rename segm segm_10
+
+*variables que cambian nombre y categoría
+
+
+*variables que están solo en 2010
+
+*/trimestre
+
+*variables que están solo en 2017
+
+//*ECH 2009//
+
+use "C:\Users\evelin.lasarga\Documents\Casavalle\ECH Stata\ech 2009.dta", clear
+
+***variables que cambian de nombre
+
+rename e49 e49_09
+rename e50 e49
+rename e57_1 e559
+*la variable e247 -cantidad de canastas mensuales- en 2009 se pregunta según cada canasta, por lo que se deben sumar las cantidades de cada canasta recibida para obtener la misma variable en 2017
+g e247=
+
+***variables que cambian de categoria
+
+rename secc secc_09
+*/categorías solo para Montevideo
+
+rename locagr locagr_09
+*/menos categorías que en 2017
+
+rename nom_locagr nom_locagr_09
+*/menos categorías que en 2017
+
+*/segm varía algunas categorías
+rename segm segm_09
+
+*/barrio varía algunas categorías
+rename barrio barrio_09
+
+*/nombarrio varía algunas categorías
+rename nombarrio nombarrio_09
+
+*/tipo de unión tiene menos categorías
+rename e35 e35_09
+
+*/estado civil no diferencia entre viudo de casamiento y viudo de unión libre
+rename e36 e36_09
+
+*/e45_1_1 tiene menos categorías que en 2017
+rename e45_1_1 e45_1_1_09
+
+*/e45_2_1 tiene menos categorías que en 2017
+rename e45_2_1 e45_2_1_09
+
+*/e45_3_1 tiene menos categorías que en 2017
+rename e45_3_1 e45_3_1_09
+
+*/e47 tiene menos categorías que en 2017
+rename e47 e47_09
+
+*/
+
+
+
+
+
+
+***variables que cambian nombre y categoría
+
+rename estrato estred13_09
+
+
+***variables que están solo en 2009
+
+*/trimestre
+rename trimestre trimestre_09
+
+*/e28
+rename e28 e28_09
+
+*/e40
+rename e40 e40_09
+
+*/e41
+rename e41 e41_09
+
+*/e42_2
+rename e42_2 e42_2_09
+
+*/e43_1
+rename e43_1 e43_1_09
+
+*/e43_2
+rename e43_2 e43_2_09
+
+*/e43_3
+rename e43_3 e43_3_09
+
+*/e43_4
+rename e43_4 e43_4_09
+
+*/e43_5
+rename e43_5 e43_5_09
+
+*/e44_1
+rename e44_1 e44_1_09
+
+*/e44_2
+rename e44_2 e44_2_09
+
+*/e44_3
+rename e44_3 e44_3_09
+
+*/e44_4
+rename e44_4 e44_4_09
+
+*/e44_5
+rename e44_5 e44_5_09
+
+*/la variable e50 es la e49 en 2017. e49 -asistencia actual a un centro de enseñananza- no está presente en 2017, y se renombra como e49_09, en tanto la e50 como e49 (sección variables que cambian de nombre)
+
+*/e59_1
+rename e59_1 e59_1_09
+
+*/e59_1_1
+rename e59_1_1 e59_1_1_09
+
+*/e59_2
+rename e59_2 e59_2_09
+
+*/e59_2_1
+rename e59_2_1 e59_2_09
+
+*/e59_3
+rename e59_3 e59_3_09
+
+*/e59_3_1
+rename e59_3_1 e59_3_1_09
+
+*/e59_4
+rename e59_4 e59_4_09
+
+*/e59_4_1
+rename e59_4_1 e59_4_1_09
+
+*/e59_5
+rename e59_5 e59_5_09
+
+*/e59_5_1
+rename e59_5_1 e59_5_1_09
+
+*/e59_6
+rename e59_6 e59_6_09
+
+*/e59_6_1
+rename e59_6_1 e59_6_1_09
+
+*/e59_7
+rename e59_7 e59_7_09
+
+*/e59_7_1
+rename e59_7_1 e59_7_1_09
+
+*/e59_8
+rename e59_8 e59_8_09
+
+*/e59_8_1
+rename e59_8_1 e59_8_1_09
+
+*/e59_9
+rename e59_9 e59_9_09
+
+*/e59_9_1
+rename e59_9_1 e59_9_1_09
+
+*/e59_10
+rename e59_10 e59_10_09
+
+*/e59_10_1
+rename e59_10_1 e59_10_1_09
+
+*/e59_11
+rename e59_11 e59_11_09
+
+*/e59_11_1
+rename e59_11_1 e59_1_09
+
+*/e59_12
+rename e59_12 e59_12_09
+
+*/e59_12_1
+rename e59_12_1 e59_12_1_09
+
+*/e59_13
+rename e59_13 e59_13_09
+
+*/e59_13_1
+rename e59_13_1 e59_13_1_09
+
+*/e51_1
+rename e51_1 e51_1_09
+
+
+*/e57_2_1
+rename e57_2_1 e57_2_1_09
+
+*/e57_2_2
+rename e57_2_2 e57_2_2_09
+
+*/e57_2_3
+rename e57_2_3 e57_3_1_09
+
+*/e57_2_4
+rename e57_2_4 e57_2_4_09
+
+*/e57_2_5
+rename e57_2_5 e57_2_5_09
+
+*/e57_2_6
+rename e57_2_6 e57_2_6_09
+
+*/e57_2_7
+rename e57_2_7 e57_2_7_09
+
+*/e57_3_1
+rename e57_3_1 e57_3_1_09
+
+*/e57_3_2
+rename e57_3_2 e57_3_2_09
+
+*/e57_3_3
+rename e57_3_3 e57_3_3_09
+
+*/e57_3_4
+rename e57_3_4 e57_3_4_09
+
+
+ 
+
+***variables que están solo en 2017
+
+*/e557
+*/e558
+*/e29_5_1
+*/e185
+*/e186_1
+*/e186_2
+*/e186_3
+*/e186_4
+*/e234_2
+*/e235_2
+*/e236
+*/e236_2
+*/e236_4
+*/e45_1_2
+*/e45_1_2_1
+*/e45_2_1_1
+*/e45_2_2
+*/e45_2_2_1
+*/e45_3_1_1
+*/e45_3_2
+*/e45_3_2_1
+*/e45_4_3
+*/e45_4_3_1
+*/e45_5_1
+*/e45_5_1_1
+*/e45_7_1
+*/e237
+*/e47_1
+*/e190
+*/e190_1
+*/e190_1_1
+*/e190_2
+*/e190_2_1
+*/e190_3
+*/e190_3_1
+*/e191
+*/e192
+*/e238
+*/e239
+*/e240_1
+*/e240_2
+*/e241
+*/e242
+*/e242_1
+*/e193
+*/e194
+*/e243_1
+*/e243_2
+*/e244
+*/e245
+*/e245_1
+*/e196
+*/e196_1
+*/e196_2
+*/e196_3
+*/e197
+*/e197_1
+*/e198
+*/e199
+*/e200
+*/e200_1
+*/e200_2
+*/e200_3
+*/e201
+*/e201_1
+*/e202_1
+*/e202_9
+*/e202_10
+*/e202_3
+*/e202_4
+*/e202_8
+*/e202_5
+*/e202_6
+*/e202_6_1
+*/e202_7
+*/e210_1
+*/e210_2
+*/e209_1
+*/e210_3
+*/e211
+*/e211_1
+*/e211_2
+*/e211_3
+*/e562
+*/e212
+*/e212_1
+*/e213
+*/e212
+*/e212_1
+*/e213
+*/e214_1
+*/e215
+*/e215_1
+*/e216
+*/e217_1
+*/e218
+*/e218_1
+*/e219
+*/e220_1
+*/e221
+*/e221_1
+*/e222
+*/e223_1
+*/e224
+*/e224_1
+*/e225
+*/e226_1
+*/e559
+*/e559_1
+*/e559_2
+*/e560
+*/e560_1
+*/e560_1_1
+*/e560_2
+*/e560_2_1
+*/e561
+*/e561_1
+*/e246
+*/e246_1
+*/e247
+*/e248
+*/e62
+*/e249
+*/e250
+
