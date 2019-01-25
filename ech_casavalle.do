@@ -75,8 +75,8 @@ rename d8_1 d8_1_15
   "Ingreso del jefe de hogar", "Ingreso del cónyuge" e "Ingreso de todos los miembros excepto
   jefe de hogar, servicio doméstico y cónyuge" (ht12 y ht15-17 respectivamente)
 - Lo mismo ocurre con la variable "Cantidad de personas perceptoras de ingreso" (ht20) 
-- Se agrega la consulta sobre uso de PC e internet en los últimos tres meses (e248 y e249; 
-  anteriormente sólo se preguntaba sobre el uso el último mes)
+- Se agrega la consulta sobre uso de PC e internet en los últimos tres meses (e248
+  y e249; anteriormente sólo se preguntaba sobre el uso el último mes)
 - Se incorpora consulta sobre el uso de internet en la tablet del Plan Ibirapitá (e250) */
 
 save "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2015.dta", replace
@@ -105,13 +105,19 @@ rename f266 f266_16
 rename f268 f268_16 // ver línea 47 y ss.
 rename f125 f125_15 // ver línea 61
 
+rename e248 e248_14
+rename e249 e249_14
+       // De la ECH 2014 para atrás aparecen las variables "Otra canasta" y "Cantidad de otra
+       // canasta por mes" para casos no comprendidos en e246. Respectivamente se codifican con
+       // los nombres e248 y e249, que en 2016-7 se utilizan para otras variables. Por tanto,
+       // se recodifica ambas variables como si fuera una variable que cambia de categoría.
 rename h167_1 h167_1_14
        // En la ECH 2014, la variable "Ingresos por depósitos bancarios" sólo 
        // tomaba dos valores (1: sí, 2: no). En adelante, se hace más específica (1: sí y
        // genera intereses, 2: no, 3: sí y no genera intereses).
 rename e191 e191_14
-       // En la ECH 2014, como en la 2017, se incluye el bloque de preguntas sobre consumo
-       // de tabaco. En 2014, la dummy sobre dejar de fumar (e191) es distinta a 2017: 
+       // En las ECH 2013-14, como en la 2017, se incluye el bloque de preguntas sobre consumo
+       // de tabaco. Hasta 2014, la dummy sobre dejar de fumar (e191) es distinta a 2017: 
        // en vez de "En los últimos 12 meses le aconsejaron dejar de fumar" es "El médico le
        // aconsejó dejar de fumar".
 rename f92 f92_14 
@@ -126,7 +132,8 @@ rename g140 g140_14
 /* Variables nuevas y/o que cambian nombre y categoría 
 - A partir de 2015 se eliminan las variables relativas a percepción de ingresos por tarjeta
   alimentaria INDA/Mides (h157 y h157_1)  
-- No se incluye la variable e558 (número de persona) en la sección "Identificación del informante"
+- De 2014 (inclusive) para atrás no se incluye la variable e558 (número de persona) en la
+  sección "Identificación del informante"
 - A partir de 2015 se incorpora un espacio de descripción de la ascendencia de la persona si
   ésta no coincide con ninguna opción establecida (e29_5_1)  
 - Lo mismo ocurre para la pregunta "¿Se atiende regularmente en este servicio de salud?"
@@ -143,11 +150,12 @@ rename g140 g140_14
   que refieren a tarjetas de beneficios (TUS Mides y TUS INDA, e560 y ss). También se 
   incorpora una variable que indaga sobre la ayuda en especiee de leche en polvo (e561).
 - Previo a la ECH 2015 no se pregunta explícitamente si se recibió ingresos por pensiones
-  antes de preguntar el monto recibido por dicho concepto (hasta 2014 la dummy g_it_2 no existe)
+  al preguntar el monto recibido por ellas (hasta 2014 inclusive la dummy g_it_2 no existe)
 - Tras la ECH 2014 desaparecen las siguientes variables relativas al ingreso personal: "Ingreso
   del trabajador dependiente por ocupación principal" (ytdop), "Ingreso del trabajador
   dependiente por otras ocupaciones" (ytdos), "Ingreso del trabajador independiente" (ytinde), e
   "Ingreso por transferencias" (ytransf).
+- Hasta la ECH 2014 se incluye la variable "Valor canasta de INDA pensionistas" (indapensi) */
 
 
 // Sigue la 2013 //
@@ -157,9 +165,25 @@ use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH
 ** Variables que cambian de nombre
 rename loc_agr_13 locagr
 rename nom_loc_agr_13 nom_locagr // ver línea 90 y ss.
+rename e57_1 e559
+rename e57_4_1 e559_1
+rename e57_4_2 e559_2 // ver línea 93 y ss.
+
+rename e233 e557 
+       // Cambia el nombre de la variable "Identificación del informante"
 
 ** Variables que cambian de categoría
 rename d8_1 d8_1_15 // ver línea 65
+rename e35 e35_15 // ver línea 51
+rename e191 e191_14
+rename e202_7 e202_7_16 // ver línea 17
+rename e246 e246_15 // ver línea 48
+rename e248 e248_14
+rename e249 e249_14 // ver líneas 108 y ss.
+rename f92 f92_14 // ver línea 123
+rename f125 f125_15 // ver línea 61
+rename g132 g132_14
+rename g140 g140_14 // ver línea 127 y ss.
 
 /* Variables nuevas y/o que cambian nombre y categoría 
 - A partir de 2014 se incorpora la variable "Fuente de energía para calefaccionar" (d260)
@@ -169,99 +193,12 @@ rename d8_1 d8_1_15 // ver línea 65
   y vehículos (h269 y h269_1) y marcas y patentes (h271 y h271_1)
 - Con anterioridad a 2014, los ingresos por intereses (de cualquier tipo) se concentraban en las
   variables "Recibió intereses" (h167) y "Ingreso por intereses" (h168_1 y h168_2). En adelante
-  ocurre lo descrito en líneas 168 y ss. NOTA: no es necesario cambiar el nombre de estas
+  ocurre lo descrito en líneas 108 y ss. NOTA: no es necesario cambiar el nombre de estas
   variables en el presente caso porque los nombre h167, h168_1 y h168_2 no se utilizan en
   ninguna variable de ECHs posteriores.
+- A partir de 2014 se incluye la variable "De lo que produce parte se destina a la venta" (f261)
+- También desde la ECH 2014 se incorpora el bloque de variables sobre tributación en el caso
+  de trabajadores independientes (f262-5), así como las variables "Reconocimiento de horas 
+  extra", "Vacaciones anuales pagas" y "Licencia por enfermedad" (f266-8)
   
-  
- 
- 
- 
- 
- 
- 
- 
- 
- *ECH 2011
-
-use "C:\Users\evelin.lasarga\Documents\Casavalle\ECH Stata\ech 2011.dta", clear
-
-*variables que cambian de nombre
-rename estratogeo09 estred13
-
-*variables que cambian de categoria
-*/nom_locagr no tiene Capilla del Sauce y tiene tacuarembo (sin tilde) además de tacuarembó
-replace nom_locagr="tacuarembó" if nom_locagr=="tacuarembo"
-
-*/segm varía algunas categorías
-rename segm segm_11
-
-*variables que cambian nombre y categoría
-
-*variables que están solo en 2011
-trimestre
-
-*variables que están solo en 2017
-
-*ECH 2010
-
-use "C:\Users\evelin.lasarga\Documents\Casavalle\ECH Stata\ech 2010.dta", clear
-
-*variables que cambian de nombre
-rename estratogeo09 estred13
-
-
-*variables que cambian de categoria
-
-
-*/nom_locagr no tiene Capilla del Sauce y tiene tacuarembo (sin tilde) además de tacuarembó
-replace nom_locagr="tacuarembó" if nom_locagr=="tacuarembo"
-
-*/segm varía algunas categorías
-rename segm segm_10
-
-*variables que cambian nombre y categoría
-
-
-*variables que están solo en 2010
-trimestre
-
-*variables que están solo en 2017
-
-*ECH 2009
-
-use "C:\Users\evelin.lasarga\Documents\Casavalle\ECH Stata\ech 2009.dta", clear
-
-*variables que cambian de nombre
-
-
-
-*variables que cambian de categoria
-rename secc secc_09
-*/categorías solo para Montevideo
-
-rename locagr locagr_09
-*/menos categorías que en 2017
-
-rename nom_locagr nom_locagr_09
-*/menos categorías que en 2017
-
-*/segm varía algunas categorías
-rename segm segm_09
-
-*/barrio varía algunas categorías
-rename barrio barrio_09
-
-*/nombarrio varía algunas categorías
-rename nombarrio nombarrio_09
-
-
-*variables que cambian nombre y categoría
-rename estrato estred13_09
-
-
-*variables que están solo en 2009
-trimestre
-
-*variables que están solo en 2017
 
