@@ -12,6 +12,11 @@
 use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2016.dta", clear
       // Por mayor comodidad transferí los datos a Stata; para no confundir los tantos
       // guardé las bases .dta en mi propia carpeta
+      
+** Variables que cambian de nombre
+rename ccz ccz10
+      // En 2011 se redefinen los límites de CCZ de Montevideo. En la base de datos tenemos 
+      // CCZ marco 2011 (ccz10) y CCZ marco 2004 (renombraremos la variable más adelante).
 
 ** Variables que cambian de categoría	  
 rename e202_7 e202_7_16	  
@@ -39,6 +44,9 @@ save "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\EC
  
 // Vamos ahora con la 2015 //
  
+** Variables que cambian de nombre
+rename ccz ccz10 // ver línea 17 
+ 
 use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2015.dta", clear 
 
 ** Variables que cambian de categoría
@@ -46,7 +54,7 @@ rename e202_7 e202_7_16
 rename f266 f266_16
 rename f268 f268_16	
        // La ECH 2015 tiene el mismo formato que la ECH 2016 para las variables e202_7, f266
-       // y f268. Ver líneas 17 y ss.
+       // y f268. Ver líneas 22 y ss.
 rename e35 e35_15
        // La variable "Tipo de unión" (e35) a partir de la ECH 2016 se complejiza: se 
        // distingue entre casamiento civil entre personas de distinto y del mismo sexo 
@@ -87,6 +95,8 @@ save "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\EC
 use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2014.dta", clear 
 
 ** Variables que cambian de nombre
+rename ccz ccz10 // ver línea 17 
+
 rename loc_agr_13 locagr
 rename nom_loc_agr_13 nom_locagr
        // Cambia el nombre de las variables de localidad agregada
@@ -163,6 +173,7 @@ rename g140 g140_14
 use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2013.dta", clear 
 
 ** Variables que cambian de nombre
+rename ccz ccz10 // ver línea 17 
 rename loc_agr_13 locagr
 rename nom_loc_agr_13 nom_locagr // ver línea 90 y ss.
 rename e57_1 e559
@@ -188,7 +199,7 @@ rename g140 g140_14 // ver línea 127 y ss.
 /* Variables nuevas y/o que cambian nombre y categoría 
 - A partir de 2014 se incorpora la variable "Fuente de energía para calefaccionar" (d260)
 - En la sección "Elementos de confort", se agregan desde 2014 variables para especificar el 
-  número de equipos de AC, autos y ciclomotores (d14_1, d18_1 y d19_1, respectivamente)
+  número de equipos de AC, autos y ciclomotores (d21_14_1, d21_18_1 y d21_19_1, respectivamente)
 - Desde 2014 aparece una variable que recoge los ingresos percibidos por alquiler de maquinaria
   y vehículos (h269 y h269_1) y marcas y patentes (h271 y h271_1)
 - Con anterioridad a 2014, los ingresos por intereses (de cualquier tipo) se concentraban en las
@@ -199,6 +210,36 @@ rename g140 g140_14 // ver línea 127 y ss.
 - A partir de 2014 se incluye la variable "De lo que produce parte se destina a la venta" (f261)
 - También desde la ECH 2014 se incorpora el bloque de variables sobre tributación en el caso
   de trabajadores independientes (f262-5), así como las variables "Reconocimiento de horas 
-  extra", "Vacaciones anuales pagas" y "Licencia por enfermedad" (f266-8)
+  extra", "Vacaciones anuales pagas" y "Licencia por enfermedad" (f266-8)*/
   
 
+// Ahora pasamos a la 2012 //
+
+use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2013.dta", clear 
+
+** Variables que cambian de nombre
+rename loc_agr_13 locagr
+rename nom_loc_agr_13 nom_locagr // ver línea 90 y ss.
+
+rename codbarrio barrio
+rename nombrebarr nombarrio
+       // Cambian las variables código y nombre de barrio para Montevideo
+rename estratogeo estred13  
+       // Cambia la variable "Estrato"
+       
+** Variables que cambian de categoría
+rename d8_1 d8_1_15 // ver línea 65
+
+rename c4 c4_12
+       // De 2013 en adelante la variable "Material predominante en pisos" integra los pisos de
+       // baldosa (originalmente valor 2) con los de cerámica, parqué, moqueta y linóleo (valor 1)
+
+/* Variables nuevas y/o que cambian nombre y categoría 
+- Hasta 2012 inclusive junto con el mes de la encuesta se relevaba también el trimestre (trimestre)
+- Por otro lado, hasta 2012 inclusive el único expansor que confeccionaba la ECH era el 
+  expansor de año (pesoano). En adelante se agregan expansores de semestre, trimestre y mes 
+  (pesosem, pesotri, pesomen)
+- A partir de la ECH 2013 se incorpora la preguta explícita sobre si se realizan contribuciones a
+  otros hogares (i259). Anteriormente sólo se preguntaba de forma directa por qué monto se habían
+  hecho tales contribuciones.
+ 
