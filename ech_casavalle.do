@@ -126,7 +126,7 @@ rename h167_1 h167_1_14
        // tomaba dos valores (1: sí, 2: no). En adelante, se hace más específica (1: sí y
        // genera intereses, 2: no, 3: sí y no genera intereses).
 rename e191 e191_14
-       // En las ECH 2013-14, como en la 2017, se incluye el bloque de preguntas sobre consumo
+       // En las ECH 2012-14, como en la 2017, se incluye el bloque de preguntas sobre consumo
        // de tabaco. Hasta 2014, la dummy sobre dejar de fumar (e191) es distinta a 2017: 
        // en vez de "En los últimos 12 meses le aconsejaron dejar de fumar" es "El médico le
        // aconsejó dejar de fumar".
@@ -138,6 +138,9 @@ rename g132 g132_14
 rename g140 g140_14
        // La ECH 2015 agrega la categoría "No corresponde" (valor 3) a la variable "Derecho a
        // pastoreo" (g132 y g140)
+replace g150=3 if g150==2
+       // Entre 2015 y 2017 la respuesta "No" en la variable "Cobra AFAM" (g150) se codifica con 
+       // el valor 3
 
 /* Variables nuevas y/o que cambian nombre y categoría 
 - A partir de 2015 se eliminan las variables relativas a percepción de ingresos por tarjeta
@@ -150,9 +153,6 @@ rename g140 g140_14
   (e45_1_2, e45_5_1) y la variable dummy "Asistencia a otros servicios de salud" (e45_7)
 - También para la variable "Razones por las que faltó al centro educativo" (e242_1, e245_1)
 - Lo mismo para la variable "Medio de transporte utilizado para ir a trabajar" (f79_1)
-- A partir de la ECH 2015 se incluye la pregunta "Lugar donde se atiende ante un problema 
-  médico" (e237) en el caso de las personas que no tienen derechos vigentes en ninguna 
-  institución médica
 - De la ECH 2015 en adelante se incorpora la variable sobre becas a estudiantes de educación
   pública (e562)  
 - A partir de la ECH 2015 cambian las variables del bloque de políticas sociales. Se
@@ -186,7 +186,7 @@ rename e233 e557
 ** Variables que cambian de categoría
 rename d8_1 d8_1_15 // ver línea 65
 rename e35 e35_15 // ver línea 51
-rename e191 e191_14
+rename e191 e191_14 // ver línea 128
 rename e202_7 e202_7_16 // ver línea 17
 rename e246 e246_15 // ver línea 48
 rename e248 e248_14
@@ -195,6 +195,7 @@ rename f92 f92_14 // ver línea 123
 rename f125 f125_15 // ver línea 61
 rename g132 g132_14
 rename g140 g140_14 // ver línea 127 y ss.
+replace g150=3 if g150==2 // ver línea 141
 
 /* Variables nuevas y/o que cambian nombre y categoría 
 - A partir de 2014 se incorpora la variable "Fuente de energía para calefaccionar" (d260)
@@ -220,6 +221,10 @@ use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH
 ** Variables que cambian de nombre
 rename loc_agr_13 locagr
 rename nom_loc_agr_13 nom_locagr // ver línea 90 y ss.
+rename e233 e557 // ver línea 180
+rename e57_1 e559
+rename e57_4_1 e559_1
+rename e57_4_2 e559_2 // ver línea 93 y ss.
 
 rename codbarrio barrio
 rename nombrebarr nombarrio
@@ -229,10 +234,32 @@ rename estratogeo estred13
        
 ** Variables que cambian de categoría
 rename d8_1 d8_1_15 // ver línea 65
+rename e35 e35_15 // ver línea 51
+rename e191 e191_14 // ver línea 128
+rename e202_7 e202_7_16 // ver línea 17
+rename e248 e248_14
+rename e249 e249_14 // ver líneas 108 y ss.
+rename f92 f92_14 // ver línea 123
+rename f125 f125_15 // ver línea 61
+rename g132 g132_14
+rename g140 g140_14 // ver línea 127 y ss.
 
 rename c4 c4_12
        // De 2013 en adelante la variable "Material predominante en pisos" integra los pisos de
        // baldosa (originalmente valor 2) con los de cerámica, parqué, moqueta y linóleo (valor 1)
+rename e45_1_1 e45_1_1_12
+       // A partir de 2013 se amplían las categorías de la variable "Derechos vigentes de salud -
+       // MSP/ASSE" (e45_1_1), agregándose las opciones de pago fuera de Fonasa (opciones 5 y 6) 
+rename e246 e246_12
+       // De 2013 en adelante se elimina la categoría "Pensionistas" de las opciones de canasta en
+       // la variable e246
+rename g150 g150_12
+       // En la ECH 2013 y las posteriores la pregunta sobre el cobro y la forma de cobro de AFAM
+       // aparecen por separado (g150 pregunta si el entrevistado cobra AFAM y g256 si lo cobra con
+       // el sueldo). De 2012 para atrás, la forma de cobro aparece incluida en la respuesta a g150
+       // (valor 1: recibe incluida en el sueldo, 2: recibe por fuera, 3: no recibe). Tampoco se 
+       // diferencia entre AFAM tradicionales y AFAM-Plan de Equidad (de 2012 para atrás no aparece
+       // la variable g255)
 
 /* Variables nuevas y/o que cambian nombre y categoría 
 - Hasta 2012 inclusive junto con el mes de la encuesta se relevaba también el trimestre (trimestre)
@@ -242,6 +269,19 @@ rename c4 c4_12
 - A partir de la ECH 2013 se incorpora la preguta explícita sobre si se realizan contribuciones a
   otros hogares (i259). Anteriormente sólo se preguntaba de forma directa por qué monto se habían
   hecho tales contribuciones.
+- Desde la ECH 2013 se incorpora una variable que identifica a la persona miembro del hogar que
+  se atiende en ASSE/MSP (e45_1_1_1)
+- También se agrega una variable "Descripción" para el caso de pacientes que ejercen su derecho
+  a la salud mediante mutualista pero en la práctica no se atienden allí por razones que no son
+  las especificadas en el cuestionario (e45_2_2_1)
+- A partir de 2013 se incorporan al bloque de políticas sociales las variables referidas a tiques
+  de INDA (e253 y e254)
+- De 2013 en adelante aparece la categoría "Prenatales" (g151_5) en la variable "Cantidad de AFAM 
+  percibidas". También aparece un espacio para especificar cuántos menores cobran complemento liceal
+  (g151_3_1)
+- Desde 2013 se contabiliza la devolución de Fonasa como "Otros ingresos" (g258 y g258_1)
+- En la ECH es la última vez en que aparece, entre los valores de canasta de INDA, la variable "Valor
+  de otra canasta" (otrcanast)
  
 //*ECH 2011//
 
