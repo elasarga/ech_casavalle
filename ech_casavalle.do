@@ -19,13 +19,13 @@ rename ccz ccz10
       // CCZ marco 2011 (ccz10) y CCZ marco 2004 (renombraremos la variable más adelante).
 
 ** Variables que cambian de categoría	  
-rename e202_7 e202_7_16	  
+rename e202_7 e202_7_11	  
       // Cambia la variable "Razones para no haber terminado educación media" (e202_7): 
       // la opción única "No tenía interés / Le interesaba aprender otras cosas" (valor 2
       // en la ECH 2016) se divide en la ECH 2017 en dos opciones, "No tenía interés" y
       // "Le interesaba aprender otras cosas" (valores 9 y 10 respectivamente)
-rename f266 f266_16
-rename f268 f268_16	  
+rename f266 f266_14
+rename f268 f268_14	  
       // En la ECH 2017 se agrega en las variables "Reconocimiento de horas extra..." (f266) 
       // y "Licencia por enfermedad o lesión paga" (f268) la opción "No sabe" (valores 5 y 3 
       // respectivamente)	  
@@ -50,26 +50,27 @@ rename ccz ccz10 // ver línea 17
 use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2015.dta", clear 
 
 ** Variables que cambian de categoría
-rename e202_7 e202_7_16	
-rename f266 f266_16
-rename f268 f268_16	
+rename e202_7 e202_7_11	
+rename f266 f266_14
+rename f268 f268_14	
        // La ECH 2015 tiene el mismo formato que la ECH 2016 para las variables e202_7, f266
        // y f268. Ver líneas 22 y ss.
-rename e35 e35_15
+       
+rename e35 e35_12
        // La variable "Tipo de unión" (e35) a partir de la ECH 2016 se complejiza: se 
        // distingue entre casamiento civil entre personas de distinto y del mismo sexo 
        // (valores 4 y 5 respectivamente; originalmente valor 1), y también entre unión 
        // concubinaria y unión de hecho. Las uniones concubinarias mantienen su valor, y las 
        // de hecho toman valor 6 o 7 según se conformen con personas de distinto o del mismo 
        // sexo.
-rename e246 e246_15
+rename e246 e246_13
        // A partir de la ECH 2016, en la variable "Tipo de canasta alimentaria recibida" 
        // (e246) se agrega la opción Uruguay Crece Contigo (valor 12) 
-rename f125 f125_15	  
+rename f125 f125_09	  
        // La variable "tipo de pensión" (f125) incorpora, a partir de la ECH 2016, las 
        // pensiones a víctimas de delitos violentos, hijos de fallecidos por violencia 
        // doméstica y la Pensión Ley 18596 (valores 5, 6 y 7 respectivamente) 
-rename d8_1 d8_1_15	   
+rename d8_1 d8_1_09	   
        // Desde la ECH 2016 se agrega en la variable "Tenencia de la vivienda" (d8_1) la 
        // categoría "Miembro de cooperativa de vivienda", que toma valor 10
    
@@ -107,17 +108,17 @@ rename e57_4_2 e559_2
        // comidas recibidas en comedor"
 
 ** Variables que cambian de categoría
-rename d8_1 d8_1_15 // ver línea 65	
-rename e35 e35_15 // ver línea 51
-rename e202_7 e202_7_16 // ver línea 17
-rename e246 e246_15 // ver línea 48
-rename f266 f266_16
-rename f268 f268_16 // ver línea 47 y ss.
-rename f125 f125_15 // ver línea 61
+rename d8_1 d8_1_09 // ver línea 73	
+rename e35 e35_12 // ver línea 59
+rename e202_7 e202_7_11 // ver línea 22
+rename e246 e246_13 // ver línea 66
+rename f266 f266_14
+rename f268 f268_14 // ver línea 27 y ss.
+rename f125 f125_09 // ver línea 69
 
-rename e248 e248_14
-rename e249 e249_14
-       // De la ECH 2014 para atrás aparecen las variables "Otra canasta" y "Cantidad de otra
+rename e248 e248_12
+rename e249 e249_12
+       // En las ECH 2012-2014 aparecen las variables "Otra canasta" y "Cantidad de otra
        // canasta por mes" para casos no comprendidos en e246. Respectivamente se codifican con
        // los nombres e248 y e249, que en 2016-7 se utilizan para otras variables. Por tanto,
        // se recodifica ambas variables como si fuera una variable que cambia de categoría.
@@ -125,17 +126,17 @@ rename h167_1 h167_1_14
        // En la ECH 2014, la variable "Ingresos por depósitos bancarios" sólo 
        // tomaba dos valores (1: sí, 2: no). En adelante, se hace más específica (1: sí y
        // genera intereses, 2: no, 3: sí y no genera intereses).
-rename e191 e191_14
-       // En las ECH 2012-14, como en la 2017, se incluye el bloque de preguntas sobre consumo
+rename e191 e191_11
+       // En las ECH 2011-14, como en la 2017, se incluye el bloque de preguntas sobre consumo
        // de tabaco. Hasta 2014, la dummy sobre dejar de fumar (e191) es distinta a 2017: 
        // en vez de "En los últimos 12 meses le aconsejaron dejar de fumar" es "El médico le
        // aconsejó dejar de fumar".
-rename f92 f92_14 
+rename f92 f92_09 
        // A partir de la ECH 2015 se incorpora la opción "Trabajador de un programa social de 
        // empleo" (valor 8) a la variable "Categoría de la ocupación" en el caso de trabajo
        // secundario
-rename g132 g132_14
-rename g140 g140_14
+rename g132 g132_09
+rename g140 g140_09
        // La ECH 2015 agrega la categoría "No corresponde" (valor 3) a la variable "Derecho a
        // pastoreo" (g132 y g140)
 replace g150=3 if g150==2
@@ -175,27 +176,27 @@ use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH
 ** Variables que cambian de nombre
 rename ccz ccz10 // ver línea 17 
 rename loc_agr_13 locagr
-rename nom_loc_agr_13 nom_locagr // ver línea 90 y ss.
+rename nom_loc_agr_13 nom_locagr // ver línea 101 y ss.
 rename e57_1 e559
 rename e57_4_1 e559_1
-rename e57_4_2 e559_2 // ver línea 93 y ss.
+rename e57_4_2 e559_2 // ver línea 104 y ss.
 
 rename e233 e557 
        // Cambia el nombre de la variable "Identificación del informante"
 
 ** Variables que cambian de categoría
-rename d8_1 d8_1_15 // ver línea 65
-rename e35 e35_15 // ver línea 51
-rename e191 e191_14 // ver línea 128
-rename e202_7 e202_7_16 // ver línea 17
-rename e246 e246_15 // ver línea 48
-rename e248 e248_14
-rename e249 e249_14 // ver líneas 108 y ss.
-rename f92 f92_14 // ver línea 123
-rename f125 f125_15 // ver línea 61
-rename g132 g132_14
-rename g140 g140_14 // ver línea 127 y ss.
-replace g150=3 if g150==2 // ver línea 141
+rename d8_1 d8_1_09 // ver línea 73
+rename e35 e35_12 // ver línea 59
+rename e191 e191_11 // ver línea 129
+rename e202_7 e202_7_11 // ver línea 22
+rename e246 e246_13 // ver línea 66
+rename e248 e248_12
+rename e249 e249_12 // ver líneas 119 y ss.
+rename f92 f92_09 // ver línea 134
+rename f125 f125_09 // ver línea 69
+rename g132 g132_09
+rename g140 g140_09 // ver línea 138 y ss.
+replace g150=3 if g150==2 // ver línea 142
 
 /* Variables nuevas y/o que cambian nombre y categoría 
 - A partir de 2014 se incorpora la variable "Fuente de energía para calefaccionar" (d260)
@@ -220,11 +221,11 @@ use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH
 
 ** Variables que cambian de nombre
 rename loc_agr_13 locagr
-rename nom_loc_agr_13 nom_locagr // ver línea 90 y ss.
-rename e233 e557 // ver línea 180
+rename nom_loc_agr_13 nom_locagr // ver línea 101 y ss.
+rename e233 e557 // ver línea 184
 rename e57_1 e559
 rename e57_4_1 e559_1
-rename e57_4_2 e559_2 // ver línea 93 y ss.
+rename e57_4_2 e559_2 // ver línea 104 y ss.
 
 rename codbarrio barrio
 rename nombrebarr nombarrio
@@ -233,30 +234,30 @@ rename estratogeo estred13
        // Cambia la variable "Estrato"
        
 ** Variables que cambian de categoría
-rename d8_1 d8_1_15 // ver línea 65
-rename e35 e35_15 // ver línea 51
-rename e191 e191_14 // ver línea 128
-rename e202_7 e202_7_16 // ver línea 17
-rename e248 e248_14
-rename e249 e249_14 // ver líneas 108 y ss.
-rename f92 f92_14 // ver línea 123
-rename f125 f125_15 // ver línea 61
-rename g132 g132_14
-rename g140 g140_14 // ver línea 127 y ss.
+rename d8_1 d8_1_09 // ver línea 73
+rename e35 e35_12 // ver línea 59
+rename e191 e191_11 // ver línea 129
+rename e202_7 e202_7_11 // ver línea 22
+rename e248 e248_12
+rename e249 e249_12 // ver líneas 119 y ss.
+rename f92 f92_09 // ver línea 134
+rename f125 f125_09 // ver línea 69
+rename g132 g132_09
+rename g140 g140_09 // ver línea 138 y ss.
 
-rename c4 c4_12
+rename c4 c4_09
        // De 2013 en adelante la variable "Material predominante en pisos" integra los pisos de
        // baldosa (originalmente valor 2) con los de cerámica, parqué, moqueta y linóleo (valor 1)
-rename e45_1_1 e45_1_1_12
+rename e45_1_1 e45_1_1_11
        // A partir de 2013 se amplían las categorías de la variable "Derechos vigentes de salud -
        // MSP/ASSE" (e45_1_1), agregándose las opciones de pago fuera de Fonasa (opciones 5 y 6) 
 rename e246 e246_12
        // De 2013 en adelante se elimina la categoría "Pensionistas" de las opciones de canasta en
        // la variable e246
-rename g150 g150_12
+rename g150 g150_11
        // En la ECH 2013 y las posteriores la pregunta sobre el cobro y la forma de cobro de AFAM
        // aparecen por separado (g150 pregunta si el entrevistado cobra AFAM y g256 si lo cobra con
-       // el sueldo). De 2012 para atrás, la forma de cobro aparece incluida en la respuesta a g150
+       // el sueldo). En las ECH 2011-12, la forma de cobro aparece incluida en la respuesta a g150
        // (valor 1: recibe incluida en el sueldo, 2: recibe por fuera, 3: no recibe). Tampoco se 
        // diferencia entre AFAM tradicionales y AFAM-Plan de Equidad (de 2012 para atrás no aparece
        // la variable g255)
@@ -281,7 +282,7 @@ rename g150 g150_12
   (g151_3_1)
 - Desde 2013 se contabiliza la devolución de Fonasa como "Otros ingresos" (g258 y g258_1)
 - En la ECH es la última vez en que aparece, entre los valores de canasta de INDA, la variable "Valor
-  de otra canasta" (otrcanast)
+  de otra canasta" (otrcanast)*/
  
 //*ECH 2011//
 
