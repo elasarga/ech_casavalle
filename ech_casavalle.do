@@ -6,8 +6,14 @@
 ** ECH 2017, con las correcciones/apuntes que se hagan acá. La referencia es siempre la
 ** base tal como está presentada para la ECH 2017.
 
+use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2017.dta", clear
+rename ccz ccz10
+save "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2017v2.dta", replace
+      // Antes de arrancar en si con la armonización, corregimos una variable de la ECH 2017.
+      // En 2011 se redefinen los límites de CCZ de Montevideo. En la base de datos tenemos 
+      // CCZ marco 2011 (ccz10) y CCZ marco 2004 (renombraremos la variable más adelante).
 
-// Empezamos por la ECH 2016 //
+// Ahora sí, empezamos por la ECH 2016 //
 
 use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2016.dta", clear
       // Por mayor comodidad transferí los datos a Stata; para no confundir los tantos
@@ -15,8 +21,7 @@ use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH
       
 ** Variables que cambian de nombre
 rename ccz ccz10
-      // En 2011 se redefinen los límites de CCZ de Montevideo. En la base de datos tenemos 
-      // CCZ marco 2011 (ccz10) y CCZ marco 2004 (renombraremos la variable más adelante).
+      // Mantenemos el mismo criterio que aparece en las líneas 9 y ss.
 
 ** Variables que cambian de categoría	  
 rename e202_7 e202_7_11	  
@@ -39,22 +44,22 @@ rename f268 f268_14
 - Se agrega en las variables "Forma en que percibió los ingresos" (g250 y g251) la 
   opción "Tarjeta prepaga" (g250_5 y g251_5) */
    
-save "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2016.dta", replace
+save "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2016v2.dta", replace
    
  
 // Vamos ahora con la 2015 //
  
-** Variables que cambian de nombre
-rename ccz ccz10 // ver línea 17 
- 
 use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2015.dta", clear 
+
+** Variables que cambian de nombre
+rename ccz ccz10 // variable ya renombrada anteriormente
 
 ** Variables que cambian de categoría
 rename e202_7 e202_7_11	
 rename f266 f266_14
 rename f268 f268_14	
-       // La ECH 2015 tiene el mismo formato que la ECH 2016 para las variables e202_7, f266
-       // y f268. Ver líneas 22 y ss.
+       // Variables ya renombradas anteriormente. La ECH 2015 tiene el mismo formato que la ECH 
+       // 2016 para las variables e202_7, f266 y f268. Ver líneas 27 y ss.
        
 rename e35 e35_12
        // La variable "Tipo de unión" (e35) a partir de la ECH 2016 se complejiza: se 
@@ -88,7 +93,7 @@ rename d8_1 d8_1_09
   y e249; anteriormente sólo se preguntaba sobre el uso el último mes)
 - Se incorpora consulta sobre el uso de internet en la tablet del Plan Ibirapitá (e250) */
 
-save "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2015.dta", replace
+save "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2015.dtav2", replace
 
 
 // Turno de la 2014 //
@@ -96,7 +101,7 @@ save "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\EC
 use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2014.dta", clear 
 
 ** Variables que cambian de nombre
-rename ccz ccz10 // ver línea 17 
+rename ccz ccz10 // variable ya renombrada anteriormente
 
 rename loc_agr_13 locagr
 rename nom_loc_agr_13 nom_locagr
@@ -108,13 +113,13 @@ rename e57_4_2 e559_2
        // comidas recibidas en comedor"
 
 ** Variables que cambian de categoría
-rename d8_1 d8_1_09 // ver línea 73	
-rename e35 e35_12 // ver línea 59
-rename e202_7 e202_7_11 // ver línea 22
-rename e246 e246_13 // ver línea 66
+rename d8_1 d8_1_09 	
+rename e35 e35_12 
+rename e202_7 e202_7_11 
+rename e246 e246_13 
 rename f266 f266_14
-rename f268 f268_14 // ver línea 27 y ss.
-rename f125 f125_09 // ver línea 69
+rename f268 f268_14 
+rename f125 f125_09 // variables ya renombradas anteriormente
 
 rename e248 e248_12
 rename e249 e249_12
@@ -127,7 +132,7 @@ rename h167_1 h167_1_14
        // tomaba dos valores (1: sí, 2: no). En adelante, se hace más específica (1: sí y
        // genera intereses, 2: no, 3: sí y no genera intereses).
 rename e191 e191_11
-       // En las ECH 2011-14, como en la 2017, se incluye el bloque de preguntas sobre consumo
+       // En las ECH 2011, 2014 y 2017 se incluye un bloque de preguntas sobre consumo
        // de tabaco. Hasta 2014, la dummy sobre dejar de fumar (e191) es distinta a 2017: 
        // en vez de "En los últimos 12 meses le aconsejaron dejar de fumar" es "El médico le
        // aconsejó dejar de fumar".
@@ -168,35 +173,36 @@ replace g150=3 if g150==2
   "Ingreso por transferencias" (ytransf).
 - Hasta la ECH 2014 se incluye la variable "Valor canasta de INDA pensionistas" (indapensi) */
 
+save "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2014.dtav2", replace
+
 
 // Sigue la 2013 //
 
 use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2013.dta", clear 
 
 ** Variables que cambian de nombre
-rename ccz ccz10 // ver línea 17 
+rename ccz ccz10 
 rename loc_agr_13 locagr
-rename nom_loc_agr_13 nom_locagr // ver línea 101 y ss.
+rename nom_loc_agr_13 nom_locagr 
 rename e57_1 e559
 rename e57_4_1 e559_1
-rename e57_4_2 e559_2 // ver línea 104 y ss.
+rename e57_4_2 e559_2 // variables ya renombradas anteriormente
 
 rename e233 e557 
        // Cambia el nombre de la variable "Identificación del informante"
 
 ** Variables que cambian de categoría
-rename d8_1 d8_1_09 // ver línea 73
-rename e35 e35_12 // ver línea 59
-rename e191 e191_11 // ver línea 129
-rename e202_7 e202_7_11 // ver línea 22
-rename e246 e246_13 // ver línea 66
+rename d8_1 d8_1_09 
+rename e35 e35_12 
+rename e202_7 e202_7_11 
+rename e246 e246_13 
 rename e248 e248_12
-rename e249 e249_12 // ver líneas 119 y ss.
-rename f92 f92_09 // ver línea 134
-rename f125 f125_09 // ver línea 69
+rename e249 e249_12 
+rename f92 f92_09 
+rename f125 f125_09 
 rename g132 g132_09
-rename g140 g140_09 // ver línea 138 y ss.
-replace g150=3 if g150==2 // ver línea 142
+rename g140 g140_09
+replace g150=3 if g150==2 // variables ya renombradas/redefinidas anteriormente
 
 /* Variables nuevas y/o que cambian nombre y categoría 
 - A partir de 2014 se incorpora la variable "Fuente de energía para calefaccionar" (d260)
@@ -213,19 +219,21 @@ replace g150=3 if g150==2 // ver línea 142
 - También desde la ECH 2014 se incorpora el bloque de variables sobre tributación en el caso
   de trabajadores independientes (f262-5), así como las variables "Reconocimiento de horas 
   extra", "Vacaciones anuales pagas" y "Licencia por enfermedad" (f266-8)*/
-  
+ 
+save "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2014.dtav2", replace
+
 
 // Ahora pasamos a la 2012 //
 
-use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2013.dta", clear 
+use "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2012.dta", clear 
 
 ** Variables que cambian de nombre
 rename loc_agr_13 locagr
-rename nom_loc_agr_13 nom_locagr // ver línea 101 y ss.
-rename e233 e557 // ver línea 184
+rename nom_loc_agr_13 nom_locagr 
+rename e233 e557 
 rename e57_1 e559
 rename e57_4_1 e559_1
-rename e57_4_2 e559_2 // ver línea 104 y ss.
+rename e57_4_2 e559_2 // variables ya renombradas anteriormente
 
 rename codbarrio barrio
 rename nombrebarr nombarrio
@@ -234,16 +242,15 @@ rename estratogeo estred13
        // Cambia la variable "Estrato"
        
 ** Variables que cambian de categoría
-rename d8_1 d8_1_09 // ver línea 73
-rename e35 e35_12 // ver línea 59
-rename e191 e191_11 // ver línea 129
-rename e202_7 e202_7_11 // ver línea 22
+rename d8_1 d8_1_09 
+rename e35 e35_12 
+rename e202_7 e202_7_11
 rename e248 e248_12
-rename e249 e249_12 // ver líneas 119 y ss.
-rename f92 f92_09 // ver línea 134
-rename f125 f125_09 // ver línea 69
+rename e249 e249_12 
+rename f92 f92_09
+rename f125 f125_09 
 rename g132 g132_09
-rename g140 g140_09 // ver línea 138 y ss.
+rename g140 g140_09 // variables ya renombradas anteriormente
 
 rename c4 c4_09
        // De 2013 en adelante la variable "Material predominante en pisos" integra los pisos de
@@ -283,6 +290,9 @@ rename g150 g150_11
 - Desde 2013 se contabiliza la devolución de Fonasa como "Otros ingresos" (g258 y g258_1)
 - En la ECH es la última vez en que aparece, entre los valores de canasta de INDA, la variable "Valor
   de otra canasta" (otrcanast)*/
+ 
+ save "\\Kronos\evaluacion\Evaluación CASAVALLE\PROCESAMIENTO ECH_Z CASAVALLE\ECH Stata\ech 2012.dtav2", replace
+ 
  
 //*ECH 2011//
 
